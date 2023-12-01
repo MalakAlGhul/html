@@ -16,10 +16,27 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            z-index: 1;
+            position: relative;
+        }
+
+        .dark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        .text-center {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
+<div class="dark-overlay"></div>
 <div id="navbar-placeholder"></div>
 <script
         src="https://code.jquery.com/jquery-3.7.1.js"
@@ -31,7 +48,15 @@
     });
 </script>
 <div class="container">
+    <div class="text-center mt-4">
+        <a href="chapter1.html" class="btn btn-primary btn-lg">< Chapter 1</a>
+        <a href="chapter3.html" class="btn btn-primary btn-lg">Chapter 3 ></a>
+    </div>
     <div id="imageCardsContainer" class="d-flex flex-wrap justify-content-around mt-4"></div>
+    <div class="text-center mt-2 mb-4">
+        <a href="chapter1.html" class="btn btn-primary btn-lg">< Chapter 1</a>
+        <a href="chapter3.html" class="btn btn-primary btn-lg">Chapter 3 ></a>
+    </div>
     <script>
         $(document).ready(function() {
             var imageDirectory = 'mangaChapter/ch2/';
@@ -39,8 +64,8 @@
             var imageCardsContainer = $('#imageCardsContainer');
             for (var i = 0; i <= numberOfImages; i++) {
                 var imagePath = imageDirectory + i + '.png';
-                var cardHtml = '<div class="card mx-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 70rem;">' +
-                    '<img src="' + imagePath + '" class="card-img-top" alt="...">' + '</div>';
+                var cardHtml = '<div class="card mx-auto shadow p-3 mb-3 bg-body-tertiary rounded-0" style="width: 70rem;">' +
+                    '<img src="' + imagePath + '" class="card-img-top" style="border-radius: 0;" alt="...">' + '</div>';
                 imageCardsContainer.append(cardHtml);
             }
         });
